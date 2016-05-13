@@ -1,0 +1,94 @@
+
+INSTALL THE LATEST JAVA JDK AND JRE. refer to my repository on jdk_jre_installation.
+
+
+-----------------------------------------------------------------
+
+CONFIGURING SSH
+
+1) Installing open SSH Server - Client 
+
+$ sudo apt-get install openssh-server openssh-client
+
+2) Generate Key- Value Pairs
+
+$ ssh-keygen -t rsa -P ""
+
+3) Configure password less SSH.
+	Copy the content of public key to authorized_keys file.
+
+$ cat $HOME/.ssh/id_rsa.pub>>$HOME/.ssh/authorized_keys
+
+4) Check by SSH to localhost
+
+$ ssh localhost
+
+----------------------------------------------------------------
+
+INSTALLING HADOOP
+
+1) Download the hadoop distribution from the hadoop site. In this case we have downloaded the Hadoop cloudera tar file from archive.cloudera.com
+
+2) Untar the package
+
+$ tar xvzf hadoop-0.20.2-cdh3u6.tar.gz
+
+3) Go to HADOP_HOME_DIR
+
+$ cd hadoop-0.20.2-cdh3u6/
+
+---------------------------------------------------------------------
+
+HADOOP SETUP CONFIGURATION
+
+1) hadoop-env.sh
+
+Open conf/hadoop-env.sh
+Put sth like this:
+
+export JAVA_HOME = export JAVA_HOME = /usr/local/java/jdk1.8.0_91
+
+2) core-site.xml
+
+Edit configuration file conf/core-site.xml and add following entries:
+	
+<configuration>
+ <property>
+ <name>fs.default.name</name>
+ <value>hdfs://localhost:9000</value>
+ </property>
+ </configuration>
+
+3) hdfs-site.xml
+
+Edit configuration file conf/hdfs-site.xml and add following entries:
+
+<configuration>
+ <property>
+ <name>dfs.replication</name>
+ <value>1</value>
+ </property>
+</configuration>
+
+4) mapred-site.xml
+
+Edit configuration file conf/mapred-site.xml and add following entries:
+
+<configuration>
+ <property>
+ <name>mapred.job.tracker</name>
+ <value>localhost:9001</value>
+ </property>
+</configuration>
+
+
+-----------------------------------------------------------------------------------
+
+EDITING THE .bashrc
+
+1) sudo gedit ~/.bashrc
+
+2) Add the following at the end:
+
+export HADOOP_HOME=$HOME/hadoop-0.20.2-cdh3u6
+export PATH=$PATH:$HADOOP_HOME/bin
