@@ -46,7 +46,7 @@ HADOOP SETUP CONFIGURATION
 Open conf/hadoop-env.sh
 Put sth like this:
 
-export JAVA_HOME = export JAVA_HOME = /usr/local/java/jdk1.8.0_91
+export JAVA_HOME=/usr/local/java/jdk1.8.0_91
 
 2) core-site.xml
 
