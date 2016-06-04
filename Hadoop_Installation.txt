@@ -57,7 +57,11 @@ Edit configuration file conf/core-site.xml and add following entries:
  <name>fs.default.name</name>
  <value>hdfs://localhost:9000</value>
  </property>
- </configuration>
+ <property>
+ <name> hadoop.tmp.dir </name>
+ <value>/home/rajan/hadoop_temp</value>
+ </property>
+</configuration>
 
 3) hdfs-site.xml
 
@@ -92,3 +96,16 @@ EDITING THE .bashrc
 
 export HADOOP_HOME=$HOME/hadoop-0.20.2-cdh3u6
 export PATH=$PATH:$HADOOP_HOME/bin
+
+--------------------------------------------------------------------------------------
+- Starting hadoop
+$ start-all.sh
+
+-- Stopping hadoop
+$ stop-all.sh
+
+-- Use the following command to check the status of nodes.
+$ jps
+ 
+-- Formatting the namenode.
+$ hadoop namenode -format
