@@ -1,3 +1,3 @@
-# hadoop_installation
+# Hadoop and Big Data
 
-This repository is about installing hadoop on ubuntu.
+This repository is about installing hadoop on ubuntu and different programs.
